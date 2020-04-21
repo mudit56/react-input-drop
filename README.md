@@ -10,6 +10,10 @@
 npm install --save react-input-drop
 ```
 
+```bash
+yarn add react-input-drop
+```
+
 ## Props
 
 
@@ -24,6 +28,8 @@ npm install --save react-input-drop
 | whenFocus | It will get invoked when the input tag is focused | - | - | No |
 | whenChange  | It will get invoked when the input value is changed, it receives input value as argument | - | - | No |
 | customClass | To override the default boring style | - | - | No |
+
+
 
 ## Usage
 
