@@ -6,36 +6,39 @@ import 'react-input-drop/dist/index.css';
 class App extends React.Component {
 
   state = {
-    options : [],
+    // You can also get these options from an api call if required. 
+    options : [
+      {id: 1, name: 'One'},
+      {id: 2, name: 'Two'},
+      {id: 3, name: 'Three'},
+      {id: 4, name: 'Four'}
+    ],
+    filteredOptions: [],
     selected: null,
   }
 
   whenFocusAndChange = async (value = '') => {
-    const response = await fetch(`http://54.200.190.162:4002/api/company/searchCompensationCompany?name=${value}`);
-    let res;
-    let data;
-    if(response.ok) {
-      res = await response.json();
-      data = res.data || [];
-    }
-    this.setState({options: data});
+    // this function is the place where you can make a api call to get the options if reqired.
+    // You will get the typed value as argument
+    const { options } = this.state;
+    const filteredOptions = options.filter((item)=>item.name.toLowerCase().indexOf(value.toLowerCase().trim()) > -1 )
+    this.setState({filteredOptions});
   }
 
   onSelectHandler = (selectedOption) => {
-    //
+    console.log(selectedOption)
   }
 
   render() {
     return (
       <div className="App">
-        <div>
-          <InputDrop
+          Count : <InputDrop
             whenFocusAndChange = {this.whenFocusAndChange}
-            options={this.state.options}
-            optionConfig={["companyName","_id"]}
+            options={this.state.filteredOptions}
+            optionConfig={["name","id"]} // You have to pass the keys whose value you will get once item is selected. 
             whenSelected={this.onSelectHandler}
+            placeholder="Count"
           />
-        </div>
       </div>
     );
   }
