@@ -12,15 +12,18 @@ npm install --save react-input-drop
 
 ## Props
 
-options -> Array of options to select  -> Required
-optionConfig -> Array with two string elements, it contains the keys with which one object will be returned after selection. -> Required
-whenSelected -> callback which will receive the selected option as argument -> Required
 
-placeholder -> placeholder String
 
-whenFocusAndChange -> It will get invoked when the input value is changed or the input tag is focused, it receives input value as argument
-whenFocus -> It will get invoked when the input tag is focused
-whenChange -> It will get invoked when the input value is changed, it receives input value as argument
+| Prop | Summary | Example | Default | isRequired |
+| ------ | ------ | ------ | ------ | ------ |
+| options  | Array of options to select, keys could be anything  | {id: '', name '' } | - | Yes |
+| optionConfig | Array with two string elements, it contains the keys with which one object will be returned after selection | ["name","id"] | - | Yes |
+| whenSelected | callback which will receive the selected option as argument | - | - | Yes |
+| placeholder  | placeholder String | 'Enter Value' | '' | No |
+| whenFocusAndChange | It will get invoked when the input value is changed or the input tag is focused, it receives input value as argument | - | - | No |
+| whenFocus | It will get invoked when the input tag is focused | - | - | No |
+| whenChange  | It will get invoked when the input value is changed, it receives input value as argument | - | - | No |
+| customClass | To override the default boring style | - | - | No |
 
 ## Usage
 
