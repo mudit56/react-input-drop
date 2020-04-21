@@ -54,13 +54,13 @@ class InputDrop extends Component {
   }
 
   render() {
-    const { options = [], optionConfig, placeholder } = this.props
+    const { options = [], optionConfig, placeholder, customClass } = this.props
     const key = optionConfig[1]
     const id = key
     const displayKey = optionConfig[0]
     return (
       <div
-        className={s.container}
+        className={[s.container, customClass].join(' ')}
         onMouseLeave={() => {
           this.setState({
             hideOptions: true
@@ -103,7 +103,8 @@ InputDrop.propTypes = {
   whenFocusAndChange: PropTypes.func.isRequired,
   whenSelected: PropTypes.func.isRequired,
   optionConfig: PropTypes.array.isRequired,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  customClass: PropTypes.string
 }
 
 InputDrop.defaultProps = {
@@ -111,7 +112,8 @@ InputDrop.defaultProps = {
   whenFocus: () => {},
   whenFocusAndChange: () => {},
   whenSelected: () => {},
-  placeholder: ''
+  placeholder: '',
+  customClass: ''
 }
 
 export default InputDrop
