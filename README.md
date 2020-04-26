@@ -1,6 +1,6 @@
 # react-input-drop
 
-> Selectable Dropdown with editable input for React
+> Input Dropdown with options to select and callback to manipulate options.
 
 [![NPM](https://img.shields.io/npm/v/react-input-drop.svg)](https://www.npmjs.com/package/react-input-drop) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 

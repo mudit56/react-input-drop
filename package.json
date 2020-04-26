@@ -1,7 +1,7 @@
 {
   "name": "react-input-drop",
   "version": "0.0.2",
-  "description": "Selectable Dropdown with editable input for React",
+  "description": "Input Dropdown with options to select and callback to manipulate options",
   "author": "mudit56",
   "license": "MIT",
   "repository": "mudit56/react-input-drop",

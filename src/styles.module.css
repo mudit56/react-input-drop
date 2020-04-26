@@ -1,14 +1,12 @@
 .container {
-  width: 200px;
+  width: 210px;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   box-sizing: border-box;
 }
 
 .container input {
-  width: 100%;
   outline: antiquewhite;
   height: 1.5rem;
 }
@@ -17,30 +15,46 @@
   padding-left: 5px ;
 }
 
-.container > div {
+.container .box  {
+  position: relative;
+}
+
+.container .box .boxIn {
   max-height: 300px;
   overflow: scroll;
+  padding-top: 5px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  background:#f5f5f5;;
+  z-index: 1;
   width: 100%;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 1px 1px 1px #f0f0f0;
 }
 
-.container > div div {
-  width: 100%;
+.container .box .boxIn div {
+  padding: 5px;
   overflow: hidden;
-  height: 30px;
-  width: 100%;
+  cursor: pointer;
 }
 
-.container > div div:focus { 
+.container .box .boxIn div:focus { 
+  background: lightgray;
+  outline: none;
+}
+
+.container .box .boxIn div:hover { 
   background: lightgray;
   outline: none;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.container > div::-webkit-scrollbar {
+.container .box .boxIn::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE and Edge */
-.container > div {
+.container .box .boxIn {
   -ms-overflow-style: none;
 }

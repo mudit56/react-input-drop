@@ -13,7 +13,11 @@ class InputDrop extends Component {
   }
 
   getStyle = () => {
-    return this.state.hideOptions ? { height: 0 } : {}
+    return this.state.hideOptions
+      ? {
+          display: 'none'
+        }
+      : {}
   }
 
   onChangeHandler = (value) => {
@@ -76,23 +80,25 @@ class InputDrop extends Component {
           placeholder={placeholder}
           type='text'
         />
-        <div style={this.getStyle()}>
-          {!!options.length &&
-            options.map((item, index) => {
-              return (
-                <div
-                  tabIndex={0}
-                  onClick={() => this.select(id, displayKey, item)}
-                  onKeyPress={(e) => {
-                    const keyCode = e.key
-                    keyCode === 'Enter' && this.select(id, displayKey, item)
-                  }}
-                  key={item[key]}
-                >
-                  {item[displayKey]}
-                </div>
-              )
-            })}
+        <div className={s.box}>
+          <div className={s.boxIn} style={this.getStyle()}>
+            {!!options.length &&
+              options.map((item, index) => {
+                return (
+                  <div
+                    tabIndex={0}
+                    onClick={() => this.select(id, displayKey, item)}
+                    onKeyPress={(e) => {
+                      const keyCode = e.key
+                      keyCode === 'Enter' && this.select(id, displayKey, item)
+                    }}
+                    key={item[key]}
+                  >
+                    {item[displayKey]}
+                  </div>
+                )
+              })}
+          </div>
         </div>
       </div>
     )
