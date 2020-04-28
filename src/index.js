@@ -71,6 +71,9 @@ class InputDrop extends Component {
           })
         }}
       >
+        <div className={s.iconContainer}>
+          <i className={s.arrow}></i>
+        </div>
         <input
           tabIndex={0}
           onFocus={this.onFocusHandler}
