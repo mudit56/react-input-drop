@@ -20,6 +20,7 @@ yarn add react-input-drop
 
 | Prop | Summary | Example | Default | isRequired |
 | ------ | ------ | ------ | ------ | ------ |
+| value | value of input element | '' | '' | No |
 | options  | Array of options to select, keys could be anything  | {id: '', name '' } | - | Yes |
 | optionConfig | Array with two string elements, it contains the keys with which one object will be returned after selection | ["name","id"] | - | Yes |
 | whenSelected | callback which will receive the selected option as argument | - | - | Yes |
@@ -28,7 +29,7 @@ yarn add react-input-drop
 | whenFocus | It will get invoked when the input tag is focused | - | - | No |
 | whenChange  | It will get invoked when the input value is changed, it receives input value as argument | - | - | No |
 | customClass | To override the default boring style | - | - | No |
-
+| inputProps | to pass attributes to input tag |  - | {} | No |
 
 
 ## Usage
@@ -51,6 +52,7 @@ class App extends React.Component {
     ],
     filteredOptions: [],
     selected: null,
+    value : '',
   }
 
   whenFocusAndChange = async (value = '') => {
@@ -58,7 +60,7 @@ class App extends React.Component {
     // You will get the typed value as argument
     const { options } = this.state;
     const filteredOptions = options.filter((item)=>item.name.toLowerCase().indexOf(value.toLowerCase().trim()) > -1 )
-    this.setState({filteredOptions});
+    this.setState({filteredOptions,value});
   }
 
   onSelectHandler = (selectedOption) => {
@@ -74,11 +76,14 @@ class App extends React.Component {
             optionConfig={["name","id"]} // You have to pass the keys whose value you will get once item is selected. 
             whenSelected={this.onSelectHandler}
             placeholder="Count"
+            value={this.state.value}
           />
       </div>
     );
   }
 }
+export default App;
+
 ```
 
 ## License

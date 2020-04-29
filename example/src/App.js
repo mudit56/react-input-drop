@@ -15,6 +15,7 @@ class App extends React.Component {
     ],
     filteredOptions: [],
     selected: null,
+    value : '',
   }
 
   whenFocusAndChange = async (value = '') => {
@@ -22,7 +23,7 @@ class App extends React.Component {
     // You will get the typed value as argument
     const { options } = this.state;
     const filteredOptions = options.filter((item)=>item.name.toLowerCase().indexOf(value.toLowerCase().trim()) > -1 )
-    this.setState({filteredOptions});
+    this.setState({filteredOptions,value});
   }
 
   onSelectHandler = (selectedOption) => {
@@ -38,6 +39,13 @@ class App extends React.Component {
             optionConfig={["name","id"]} // You have to pass the keys whose value you will get once item is selected. 
             whenSelected={this.onSelectHandler}
             placeholder="Count"
+            value={this.state.value}
+            inputProps = {{
+              autocomplete: 'on',
+              id: 'a',
+              //disabled: true,
+              // Use this space for attributes to be passed on input tag
+            }}
           />
       </div>
     );

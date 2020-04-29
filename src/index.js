@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.module.css'
-
 class InputDrop extends Component {
   constructor(props) {
     super(props)
-    const { value = '' } = props
     this.state = {
-      value,
       hideOptions: true
     }
   }
@@ -26,23 +23,22 @@ class InputDrop extends Component {
     whenFocusAndChange(value)
   }
 
-  onFocusHandler = () => {
+  onFocusHandler = (e) => {
+    const {
+      target: { value }
+    } = e
     const { whenFocus, whenFocusAndChange } = this.props
     this.setState({
-      hideOptions: false,
-      value: ''
+      hideOptions: false
     })
     whenFocus()
-    whenFocusAndChange()
+    whenFocusAndChange(value)
   }
 
   onInputChange = (e) => {
     const {
       target: { value }
     } = e
-    this.setState({
-      value: value
-    })
     this.onChangeHandler(value)
   }
 
@@ -52,13 +48,18 @@ class InputDrop extends Component {
       [displayKey]: item[displayKey]
     })
     this.setState({
-      value: item[displayKey],
       hideOptions: true
     })
   }
 
   render() {
-    const { options = [], optionConfig, placeholder, customClass } = this.props
+    const {
+      options = [],
+      optionConfig,
+      placeholder,
+      customClass,
+      inputProps
+    } = this.props
     const key = optionConfig[1]
     const id = key
     const displayKey = optionConfig[0]
@@ -76,9 +77,10 @@ class InputDrop extends Component {
           onFocus={this.onFocusHandler}
           onClick={this.onFocusHandler}
           onChange={this.onInputChange}
-          value={this.state.value}
+          value={this.props.value}
           placeholder={placeholder}
           type='text'
+          {...inputProps}
         />
         <div className={s.box}>
           <div className={s.boxIn} style={this.getStyle()}>
@@ -110,7 +112,8 @@ InputDrop.propTypes = {
   whenSelected: PropTypes.func.isRequired,
   optionConfig: PropTypes.array.isRequired,
   placeholder: PropTypes.string,
-  customClass: PropTypes.string
+  customClass: PropTypes.string,
+  inputProps: PropTypes.object
 }
 
 InputDrop.defaultProps = {
@@ -119,7 +122,8 @@ InputDrop.defaultProps = {
   whenFocusAndChange: () => {},
   whenSelected: () => {},
   placeholder: '',
-  customClass: ''
+  customClass: '',
+  inputProps: {}
 }
 
 export default InputDrop
