@@ -77,6 +77,12 @@ class App extends React.Component {
             whenSelected={this.onSelectHandler}
             placeholder="Count"
             value={this.state.value}
+            inputProps = {{
+              autocomplete: 'on',
+              id: 'a',
+              //disabled: true,
+              // Use this space for attributes to be passed on input tag
+            }}
           />
       </div>
     );
