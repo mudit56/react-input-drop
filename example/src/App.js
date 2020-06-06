@@ -6,7 +6,7 @@ import 'react-input-drop/dist/index.css';
 class App extends React.Component {
 
   state = {
-    // You can also get these options from an api call if required. 
+    // You can also get these options from an api call if required.
     options : [
       {id: 1, name: 'One'},
       {id: 2, name: 'Two'},
@@ -28,6 +28,7 @@ class App extends React.Component {
 
   onSelectHandler = (selectedOption) => {
     console.log(selectedOption)
+    this.setState({ value: selectedOption.name });
   }
 
   render() {
@@ -36,12 +37,12 @@ class App extends React.Component {
           Count : <InputDrop
             whenFocusAndChange = {this.whenFocusAndChange}
             options={this.state.filteredOptions}
-            optionConfig={["name","id"]} // You have to pass the keys whose value you will get once item is selected. 
+            optionConfig={["name","id"]} // You have to pass the keys whose value you will get once item is selected.
             whenSelected={this.onSelectHandler}
             placeholder="Count"
             value={this.state.value}
             inputProps = {{
-              autocomplete: 'on',
+              autoComplete: 'on',
               id: 'a',
               //disabled: true,
               // Use this space for attributes to be passed on input tag
