@@ -52,6 +52,12 @@ class InputDrop extends Component {
     })
   }
 
+  hideDropDown = () => {
+    setTimeout(() => {
+      this.setState({hideOptions: true});
+    }, 120);
+  }
+
   render() {
     const {
       options = [],
@@ -66,14 +72,10 @@ class InputDrop extends Component {
     return (
       <div
         className={[s.container, customClass].join(' ')}
-        onMouseLeave={() => {
-          this.setState({
-            hideOptions: true
-          })
-        }}
       >
         <input
           tabIndex={0}
+          onBlur={this.hideDropDown}
           onFocus={this.onFocusHandler}
           onClick={this.onFocusHandler}
           onChange={this.onInputChange}
@@ -83,7 +85,7 @@ class InputDrop extends Component {
           {...inputProps}
         />
         <div className={s.box}>
-          <div className={s.boxIn} style={this.getStyle()}>
+          <div id={1} ref={i=>this.boxRef=i} className={s.boxIn} style={this.getStyle()}>
             {!!options.length &&
               options.map((item, index) => {
                 return (

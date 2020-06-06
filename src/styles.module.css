@@ -39,12 +39,12 @@
   cursor: pointer;
 }
 
-.container .box .boxIn div:focus { 
+.container .box .boxIn div:focus {
   background: lightgray;
   outline: none;
 }
 
-.container .box .boxIn div:hover { 
+.container .box .boxIn div:hover {
   background: lightgray;
   outline: none;
 }
