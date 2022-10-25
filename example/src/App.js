@@ -12,8 +12,6 @@ class App extends React.Component {
       {id: 2, name: 'Two'},
       {id: 3, name: 'Three'},
       {id: 4, name: 'Four'},
-      {id: 6, name: 'Six'},
-      {id: 5, name: 'Five'}
     ],
     filteredOptions: [],
     selected: null,
@@ -30,6 +28,7 @@ class App extends React.Component {
 
   onSelectHandler = (selectedOption) => {
     console.log(selectedOption)
+    this.setState({value: selectedOption.name});
   }
 
   render() {
