@@ -58,7 +58,9 @@ class InputDrop extends Component {
       optionConfig,
       placeholder,
       customClass,
-      inputProps
+      inputProps,
+      inputStyle,
+      containerStyle,
     } = this.props
     const key = optionConfig[1]
     const id = key
@@ -66,6 +68,7 @@ class InputDrop extends Component {
     return (
       <div
         className={[s.container, customClass].join(' ')}
+        style={containerStyle}
         onMouseLeave={() => {
           this.setState({
             hideOptions: true
@@ -80,6 +83,7 @@ class InputDrop extends Component {
           value={this.props.value}
           placeholder={placeholder}
           type='text'
+          style={inputStyle}
           {...inputProps}
         />
         <div className={s.box}>
@@ -123,6 +127,8 @@ InputDrop.defaultProps = {
   whenSelected: () => {},
   placeholder: '',
   customClass: '',
+  inputStyle: {},
+  containerStyle: {},
   inputProps: {}
 }
 
