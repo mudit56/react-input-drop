@@ -11,7 +11,9 @@ class App extends React.Component {
       {id: 1, name: 'One'},
       {id: 2, name: 'Two'},
       {id: 3, name: 'Three'},
-      {id: 4, name: 'Four'}
+      {id: 4, name: 'Four'},
+      {id: 6, name: 'Six'},
+      {id: 5, name: 'Five'}
     ],
     filteredOptions: [],
     selected: null,
@@ -35,6 +37,10 @@ class App extends React.Component {
       <div className="App">
           Count : <InputDrop
             whenFocusAndChange = {this.whenFocusAndChange}
+            containerStyle={{
+              padding: '30px',
+              width: '300px'
+            }}
             options={this.state.filteredOptions}
             optionConfig={["name","id"]} // You have to pass the keys whose value you will get once item is selected. 
             whenSelected={this.onSelectHandler}
